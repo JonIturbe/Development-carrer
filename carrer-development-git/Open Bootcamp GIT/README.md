@@ -13,6 +13,12 @@ De este modo, usando el global, cambiará ese campo para todos los respositorios
 
 1- Imaginemos que ya hemos escripto un script y queremos subirlo a git. Lo que debemos hacer es abrir la consola e ir al directorio donde queramos crear ese repositorio. una vez ahí, escribirmos: 
   
+Debemos crear antes un remote y darle un nombre identificativo.
+  
+  git remote add NombreRemote urlRepositorio
+  
+Tras esto, podremos usar comodamente el repositorio utilizando el nombre dado al remote y la rama a la que queramos subir los cambios. Supongamos que hemos llamado al remote origin.
+  
   git init .
   
 Habrá generado una carpeta .git donde estará todo mi código fuente. Ahora, para añadir todo el proyecto a este repo, deberemos escribir la sentencia:
@@ -33,8 +39,9 @@ Aun no está subido, tenemos que confirmar la subida de la siguiente manera:
    
 El -m sirve para poner un mensaje de menos de 80 caracteres con un mensaje explicativo de los cambios. Para terminar de subir los cambios locales al github, tenemos que hacer:
   
-  git push
+  git push origin master
   
+Siendo origin el nombre del remote a usar y master la rama a la que queremos subir los cambios.
 En resumen, para gitear una carpeta y convertirla en un repositorio lo que hacemos es movernos a la carpeta en la consola e introducir los siguientes comandos:
 
   git init .
