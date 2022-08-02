@@ -25,18 +25,33 @@ const styles = {
     },
 }
 
+const mostrarDetallesCarro = (elm) => {
+    return(
+        <li style={styles.producto} key={elm.name}>
+            <img alt={elm.name} src={elm.img} width="50" height="32" />
+            {elm.name} <span>{elm.cantidad}</span>
+        </li> )
+}
+
+const precioTotal = (carro) => {
+    let totalPrice = 0;
+    carro.map(elm => totalPrice += elm.price*elm.cantidad )
+    return(
+        totalPrice
+    )
+}
+
 class DetallesCarro extends Component {
     render() {
         const { carro } = this.props;
-
+        let total = precioTotal(carro);
         return(
             <div style={styles.detallesCarro}>
                 <ul style={styles.ul}>
-                    {/* {carro.map(x => 
-                        <li style={styles.producto} key={x.name}>
-                            <img alt={x.name} src={x.img} width="50" height="32" />
-                            {x.name} <span>{x.cantidad}</span>
-                        </li> )} */}
+                    { carro.map(elm => mostrarDetallesCarro(elm)) }
+                    <li style={styles.producto} key="Total">
+                        Total: <span>{ total }€</span>
+                    </li>
                 </ul>
             </div>
         )

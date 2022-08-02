@@ -10,11 +10,12 @@ class App extends Component {
 
 state = {
   productos: [
-    { name: "Tomate", price: 1500, img:"/productos/tomates.jpg" },
-    { name: "Vainas", price: 2500, img:"/productos/vainas.jpg" },
-    { name: "Lechuga", price: 500, img:"/productos/lechuga.jpg" },
+    { name: "Tomate", price: 1.5, img:"/productos/tomates.jpg" },
+    { name: "Vainas", price: 2.5, img:"/productos/vainas.jpg" },
+    { name: "Lechuga", price: 0.5, img:"/productos/lechuga.jpg" },
   ],
   carro: [],
+  carroVisible: false,
 }
 
 agregarAlCarro = (producto) => {
@@ -37,11 +38,19 @@ agregarAlCarro = (producto) => {
   })
 }
 
+mostrarCarro = () => {
+  if(!this.state.carro.length){
+    return null;
+  }
+  this.setState({ carroVisible: !this.state.carroVisible });
+}
+
 render() {
-  console.log(this.state.carro);
+  const { carroVisible } = this.state;
+  // console.log(this.state.carro);
   return(
   <div>
-    <NavBar carro={ this.state.carro } />
+    <NavBar carro={ this.state.carro } carroVisible={ carroVisible } mostrarCarro={ this.mostrarCarro } />
     <Layout>
       <Title/>
       <Productos
